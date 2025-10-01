@@ -54,6 +54,11 @@ While running locally, the app will communicate with the Supabase project config
 
 Publishing remains managed through Lovable. From the project dashboard choose **Share → Publish** to deploy the latest build. Configure custom domains via **Project → Settings → Domains → Connect Domain** when you are ready to launch.
 
+## Resources
+- Planning: [Claude chat](https://claude.ai/share/83f6a8ac-fd62-4c7a-82aa-5517a4b501a6) | [ChatGPT chat](https://chatgpt.com/share/68db3caf-54d0-8000-b855-d90ea18fdbdb)
+- Video walk-through initial setup: [Part 1: Setup + v0](https://youtu.be/bsPGJMWYTQA) | [Part 2 - Lovable](https://youtu.be/4FzbxN2QPvU) | [Part 3 - v0 + VS Code + Codex](https://youtu.be/3Pdf4tG0s8M) | [Part 4 - Lovable + VS Code + Codex](https://youtu.be/b2GncUTjwQs) 
+
+
 ## License
 
 This project is distributed under the terms outlined in `LICENSE`.
