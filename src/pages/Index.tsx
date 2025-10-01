@@ -33,6 +33,12 @@ export default function Index() {
     return () => subscription.unsubscribe();
   }, []);
 
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate("/auth");
+    }
+  }, [loading, user, navigate]);
+
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     navigate("/auth");
@@ -51,8 +57,11 @@ export default function Index() {
   }
 
   if (!user) {
-    navigate("/auth");
-    return null;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
   }
 
   return (
