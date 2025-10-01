@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { User, Session } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Loader2, LogOut } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BookOpen, Loader2, LogOut, BookText, MessageCircle, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function Index() {
@@ -85,24 +86,86 @@ export default function Index() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <div className="max-w-2xl mx-auto space-y-6">
-          <div className="text-center space-y-2">
-            <h2 className="text-3xl text-balance">
-              Welcome to Your Daily Devotional
+        <div className="max-w-5xl mx-auto space-y-8">
+          <div className="text-center space-y-3">
+            <h2 className="text-4xl text-balance">
+              Welcome, {user?.user_metadata?.display_name || 'Friend'}
             </h2>
-            <p className="text-muted-foreground">
-              Your personalized spiritual journey begins here
+            <p className="text-lg text-muted-foreground">
+              Your personalized spiritual companion powered by Gloo AI
             </p>
           </div>
 
-          <div className="bg-card rounded-lg p-8 shadow-soft space-y-4 text-center">
-            <p className="text-lg text-muted-foreground">
-              Today's devotional will appear here soon.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              We're setting up your spiritual companion powered by Gloo AI.
-            </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="shadow-soft hover:shadow-lifted transition-smooth cursor-pointer group" onClick={() => navigate("/devotional")}>
+              <CardHeader>
+                <div className="p-3 rounded-lg bg-primary/10 w-fit mb-2">
+                  <BookOpen className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="flex items-center justify-between">
+                  Daily Devotional
+                  <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-smooth" />
+                </CardTitle>
+                <CardDescription>
+                  Generate personalized devotionals based on topics or Scripture passages
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button className="w-full" onClick={() => navigate("/devotional")}>
+                  Create Devotional
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-soft hover:shadow-lifted transition-smooth cursor-pointer group" onClick={() => navigate("/chat")}>
+              <CardHeader>
+                <div className="p-3 rounded-lg bg-primary/10 w-fit mb-2">
+                  <MessageCircle className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="flex items-center justify-between">
+                  Spiritual Chat
+                  <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-smooth" />
+                </CardTitle>
+                <CardDescription>
+                  Ask questions about faith, get biblical guidance, and explore spiritual topics
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button className="w-full" onClick={() => navigate("/chat")}>
+                  Start Conversation
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-soft hover:shadow-lifted transition-smooth cursor-pointer group" onClick={() => navigate("/journal")}>
+              <CardHeader>
+                <div className="p-3 rounded-lg bg-primary/10 w-fit mb-2">
+                  <BookText className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="flex items-center justify-between">
+                  Faith Journal
+                  <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-smooth" />
+                </CardTitle>
+                <CardDescription>
+                  Reflect on your journey, receive prompts, and generate prayers from your entries
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button className="w-full" onClick={() => navigate("/journal")}>
+                  Open Journal
+                </Button>
+              </CardContent>
+            </Card>
           </div>
+
+          <Card className="shadow-soft bg-gradient-peaceful text-primary-foreground">
+            <CardHeader>
+              <CardTitle>Powered by Gloo AI</CardTitle>
+              <CardDescription className="text-primary-foreground/80">
+                Your spiritual companion uses advanced AI to provide thoughtful, biblically-grounded guidance tailored to your journey
+              </CardDescription>
+            </CardHeader>
+          </Card>
         </div>
       </main>
     </div>
