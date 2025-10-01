@@ -1,1 +1,10 @@
 project_id = "tpzgigntfahllzhcrepp"
+
+[functions.gloo-devotional]
+verify_jwt = false
+
+[functions.gloo-chat]
+verify_jwt = false
+
+[functions.gloo-journal]
+verify_jwt = false
